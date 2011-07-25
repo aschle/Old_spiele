@@ -1,0 +1,75 @@
+int w = 1000;
+int h = 800;
+int border = 20;
+int margin = 20;
+int dimX;
+int dimY;
+
+// range des Diagramms
+int posX1;
+int posX2;
+int posY1;
+int posY2;
+int drawX;
+int drawY;
+
+String term1 = "male";
+String term2 = "female";
+
+ArrayList<String[]> data1 = new ArrayList<String[]>();
+ArrayList<String[]> data2 = new ArrayList<String[]>();
+
+void setup() {
+  dimX = w-2*border;
+  dimY = h-2*border;
+  posX1 = border + margin;
+  posX2 = w - border - margin;
+  posY1 = border + margin;
+  posY2 = h - border - margin;
+  drawX = dimX-2*margin;
+  drawY = dimY-2*margin;
+  size(w, h);
+  background(255);
+  fill(255);
+  noStroke();
+  rect(border, border, dimX, dimY);
+  getData();
+  
+  
+  fill(0, 0, 0, 25);
+  for (int i = 0; i< data1.size(); i++) {
+    int x = int(map(int(data1.get(i)[1]), 12, 81, posX1, posX2));
+    int y = int(map(int(data1.get(i)[4]), 0, 120, posY2, posY1));
+    ellipse(x, y, 8, 8);
+  }
+
+  fill(255, 0, 0, 50);
+  for (int i = 0; i< data2.size(); i++) {
+    int x = int(map(int(data2.get(i)[1]), 12, 81, posX1, posX2));
+    int y = int(map(int(data2.get(i)[4]), 0, 120, posY2, posY1));
+    ellipse(x, y, 8, 8);
+  }
+}
+
+void getData() {
+  String[] lines = loadStrings("Data/all.csv");
+  for (int i = 0; i < lines.length; i++) {
+    String[] line = lines[i].split(",");
+
+    if (line[0].equals(term1)) {
+      data1.add(line);
+    }
+
+    if (line[0].equals(term2)) {
+      data2.add(line);
+    }
+  }
+}
+
+void draw() {
+  fill(140);
+  rect(posX1-10, posY1, 5, drawY);
+  rect(posX2+10, posY1, 5, drawY);
+}
+
+
