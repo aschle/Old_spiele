@@ -13,7 +13,7 @@ int posY2;
 int drawX;
 int drawY;
 
-String term1 = "UO";
+String term1 = "WoW";
 String term2 = "SWG";
 
 int s1 = 4;
@@ -23,8 +23,8 @@ int sb = 1;
 
 ArrayList<String[]> data1 = new ArrayList<String[]>();
 ArrayList<String[]> data2 = new ArrayList<String[]>();
-int[][] agesCount1 = new int[70][121];
-int[][] agesCount2 = new int[70][121];
+int[][] agesCount1 = new int[25][19];
+int[][] agesCount2 = new int[25][19];
 
 void setup() {
   dimX = w-2*border;
